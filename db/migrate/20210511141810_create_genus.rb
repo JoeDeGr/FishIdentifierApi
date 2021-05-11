@@ -10,6 +10,7 @@ class CreateGenus < ActiveRecord::Migration[6.1]
       t.string :gamequalities
       t.string :description
 
+
       t.timestamps
     end
   end

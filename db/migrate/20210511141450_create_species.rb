@@ -8,6 +8,7 @@ class CreateSpecies < ActiveRecord::Migration[6.1]
       t.string :gamequalities
       t.string :distribution
       t.string :description
+      t.integer :genus_id, foreign_key: true
 
       t.timestamps
     end
