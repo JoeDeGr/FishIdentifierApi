@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'species/show'
   get 'users/create'
   get 'users/show'
   get 'users/update'
