@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'genus/show'
   get 'species/show'
-  get 'users/create'
+  post 'users/create'
   get 'users/show'
   get 'users/update'
   get 'users/destroy'
