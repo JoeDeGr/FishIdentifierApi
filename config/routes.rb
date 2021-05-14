@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'genus/show'
   get 'species/show'
   get 'users/create'
   get 'users/show'
