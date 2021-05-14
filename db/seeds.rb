@@ -12,15 +12,15 @@ j = User.create(username: "Joe", name: "Joe Jones", email: "JoeyUgotts@bob,com")
 s = Genus.create(common_name: "Sunfishes", order: "Perciformes", scientific_name: "Lepomis")
 b = Genus.create(common_name: "Bass", scientific_name: "Micropterus", order: "Perciformes" )
 
-bluegill = Species.create(common_name: "Bluegill", scientific_name: "Lepomis Macrochirus", genus_id: s.id)
+bluegill = Species.create(common_name: "Bluegill", scientific_name: "Lepomis Macrochirus", species_name: "Macrochirus", genus_id: s.id)
 
-pumpkinseed = Species.create(common_name: "Pumpkinseed", scientific_name: "Lepomis Gibbosus", genus_id: s.id)
-redbreast = Species.create(common_name: "Redbreast Sunfish", scientific_name: "Lepomis Auritus", genus_id: s.id)
-green = Species.create(common_name: "Green Sunfish", scientific_name: "Lepomis Cyanellus", genus_id: s.id)
-warmouth = Species.create(common_name: "Warmouth", scientific_name: "lepomis Gulosus", genus_id: s.id)
+pumpkinseed = Species.create(common_name: "Pumpkinseed", scientific_name: "Lepomis Gibbosus", species_name: "Gibbosus", genus_id: s.id)
+redbreast = Species.create(common_name: "Redbreast Sunfish", scientific_name: "Lepomis Auritus", species_name: "Aritus", genus_id: s.id)
+green = Species.create(common_name: "Green Sunfish", scientific_name: "Lepomis Cyanellus", species_name: "Cyanellus", genus_id: s.id)
+warmouth = Species.create(common_name: "Warmouth", scientific_name: "Lepomis Gulosus", species_name: "Gulosus", genus_id: s.id)
 
-large = Species.create(common_name: "Largemouth Bass", scientific_name: "Micropterus Salmoides", genus_id: b.id)
-small = Species.create(common_name: "Smallmouth Bass", scientific_name: "Micropterus Dolomieu", genus_id: b.id)
+large = Species.create(common_name: "Largemouth Bass", scientific_name: "Micropterus Salmoides", species_name: "Salmoides", genus_id: b.id)
+small = Species.create(common_name: "Smallmouth Bass", scientific_name: "Micropterus Dolomieu", species_name: "Dolomieu", genus_id: b.id)
 # s = Species.create(common_name: "redear", genus_id: g.id)
 
 # sunfish = [bluegill, pumpkinseed, redbreast, green, warmouth]
