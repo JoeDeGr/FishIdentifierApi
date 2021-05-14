@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
   def create
-    # user = User.first
-    binding.pry
-    user = User.find_by(user_params) || User.new(user_params)
-    if user.valid? 
-    # if user.valid? && user.authenticate(params[:user][:password])
+    user = User.new(user_params)
+    if user.valid? && user.authenticate(params[:user][:password])
+      binding.pry
       species = user.species
       genus = user.genus
       render json: {user: user, species: species, genus: genus}
@@ -12,7 +10,6 @@ class UsersController < ApplicationController
     else
       render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
     end
-
   end
 
   def show
@@ -28,6 +25,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
   end
 end
