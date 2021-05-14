@@ -41,24 +41,25 @@ ActiveRecord::Schema.define(version: 2021_05_11_195011) do
   end
 
   create_table "genus", force: :cascade do |t|
-    t.string "commonname"
-    t.string "scientificname"
+    t.string "common_name"
+    t.string "scientific_name"
     t.string "family"
     t.string "order"
     t.string "habitat"
     t.string "size"
-    t.string "gamequalities"
+    t.string "game_qualities"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "species", force: :cascade do |t|
-    t.string "commonname"
-    t.string "scientificname"
+    t.string "common_name"
+    t.string "scientific_name"
+    t.string "species_name"
     t.string "habitat"
     t.string "size"
-    t.string "gamequalities"
+    t.string "game_qualities"
     t.string "distribution"
     t.string "description"
     t.integer "genus_id"

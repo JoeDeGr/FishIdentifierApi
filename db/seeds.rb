@@ -7,10 +7,41 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 u = User.create(username: "Bob", name: "Bob Jones", email: "BobbyUgotts@bob,com")
-g = Genus.create(commonname: "sunfish" )
-s = Species.create(commonname: "redear", genus_id: g.id)
+j = User.create(username: "Joe", name: "Joe Jones", email: "JoeyUgotts@bob,com")
 
-u.species << s
-u.genus << g
+s = Genus.create(common_name: "Sunfishes", order: "Perciformes", scientific_name: "Lepomis")
+b = Genus.create(common_name: "Bass", scientific_name: "Micropterus", order: "Perciformes" )
+
+bluegill = Species.create(common_name: "Bluegill", scientific_name: "Lepomis Macrochirus", genus_id: s.id)
+
+pumpkinseed = Species.create(common_name: "Pumpkinseed", scientific_name: "Lepomis Gibbosus", genus_id: s.id)
+redbreast = Species.create(common_name: "Redbreast Sunfish", scientific_name: "Lepomis Auritus", genus_id: s.id)
+green = Species.create(common_name: "Green Sunfish", scientific_name: "Lepomis Cyanellus", genus_id: s.id)
+warmouth = Species.create(common_name: "Warmouth", scientific_name: "lepomis Gulosus", genus_id: s.id)
+
+large = Species.create(common_name: "Largemouth Bass", scientific_name: "Micropterus Salmoides", genus_id: b.id)
+small = Species.create(common_name: "Smallmouth Bass", scientific_name: "Micropterus Dolomieu", genus_id: b.id)
+# s = Species.create(common_name: "redear", genus_id: g.id)
+
+# sunfish = [bluegill, pumpkinseed, redbreast, green, warmouth]
+# sunfish.each do |f| 
+#     s.push(f)
+# end
+
+# basses = [large, small]
+# basses.each do |f|
+#     b.push(f)
+# end
+
+u.genus.push(s)
+u.genus.push(b)
+j.genus.push(b)
+
+u.species.push(large)
+j.species.push(pumpkinseed)
+u.species.push(bluegill)
+u.species.push(warmouth)
+j.species.push(large)
+j.species.push(small)
 
 

@@ -1,11 +1,12 @@
 class CreateSpecies < ActiveRecord::Migration[6.1]
   def change
     create_table :species do |t|
-      t.string :commonname
-      t.string :scientificname
+      t.string :common_name
+      t.string :scientific_name
+      t.string :species_name
       t.string :habitat
       t.string :size
-      t.string :gamequalities
+      t.string :game_qualities
       t.string :distribution
       t.string :description
       t.integer :genus_id, foreign_key: true
