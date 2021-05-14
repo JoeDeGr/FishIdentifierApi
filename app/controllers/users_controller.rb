@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   def create
     user = User.find_by(user_params) || User.new(user_params)
+    if user.valid? && user.authenticate(params[:user][:password])
+      species = user.species
+      genus = user.genus
+      render json: {user: user, species: species, genus: genus}
+      user.save
+    else
+      render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
+    end
+
   end
 
   def show
