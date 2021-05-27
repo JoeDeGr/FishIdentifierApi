@@ -1,19 +1,18 @@
 class ApplicationController < ActionController::API
-    # def require_login
-    #     binding.pry
-    #       return head(:forbidden) unless session.include? :user_id
-    #   end
-    
-    #   def current_user
-    #       user = (User.find(session[:user_id]) || User.new)
-    #   end
+   before_action :require_login
+
+    def logged_id?
+        !!session_user
+    end
+
+    def require_login
+        render json: {message: "Dont suck, just log in before you try this again. Ok?"}, status: :unauthorized unless logged_in?
+    end
 
     def encode_token(payload)
         JWT.encode(payload, 'my_secret_garden')
-    end
-
+    end 
     def session_user
-        binding.pry
         decoded_hash = decoded_token
         if !decoded_hash.empty?
             user_id = decoded_hash[0]['user_id']
@@ -21,17 +20,15 @@ class ApplicationController < ActionController::API
         else
             nil
         end
-    end
-
+    end 
     def auth_header
         request.headers['Authorization']
-    end
-
+    end 
     def decoded_token
         if auth_header
             token = auth_header.split(' ')[1]
             begin
-                JWT.decode(token, 'my_secret', true, algorithm: 'HS256')
+                JWT.decode(token, 'my_secret_garden', true, algorithm: 'HS256')
             rescue JWT::DecodeError
                 []
             end

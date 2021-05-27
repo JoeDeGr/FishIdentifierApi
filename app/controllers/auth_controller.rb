@@ -15,13 +15,15 @@ class AuthController < ApplicationController
 
     def auto_login
         if session_user
-            binding.pry
-            user = session_user
-            render json: {user: user, user_species: user.species, user_genus: user.genus, jwt: token}
+            
+            user = @user
+            render json: {user: user, user_species: user.species, user_genus: user.genus}
         else
             render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
         end
     end
+
+    
 
     private
 
