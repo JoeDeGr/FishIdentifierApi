@@ -7,4 +7,8 @@ class ApplicationController < ActionController::API
     #   def current_user
     #       user = (User.find(session[:user_id]) || User.new)
     #   end
+
+    def encode_token(payload)
+        JWT.encode(payload, 'my_secret_garden')
+    end
 end

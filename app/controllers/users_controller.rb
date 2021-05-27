@@ -2,13 +2,14 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.valid? && user.authenticate(params[:user][:password])
-      binding.pry
+      payload = {user_id: user.id}
       species = user.species
       genus = user.genus
+      token = encode_token(payload)
       render json: {user: user, species: species, genus: genus, jwt: token}
       user.save
     else
-      render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
+      render json: {errors: "Login Failed. Don't suck, just try again... but better this time.", message: user.errors.full_messages}.to_json
     end
   end
 
