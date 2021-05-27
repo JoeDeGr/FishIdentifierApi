@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def create
+    binding.pry
     user = User.new(user_params)
     if user.valid? && user.authenticate(params[:user][:password])
       payload = {user_id: user.id}
