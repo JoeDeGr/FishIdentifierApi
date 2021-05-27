@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       binding.pry
       species = user.species
       genus = user.genus
-      render json: {user: user, species: species, genus: genus}
+      render json: {user: user, species: species, genus: genus, jwt: token}
       user.save
     else
       render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
