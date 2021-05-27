@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
    before_action :require_login
 
-    def logged_id?
+    def logged_in?
         !!session_user
     end
 

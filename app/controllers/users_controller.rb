@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       species = user.species
       genus = user.genus
       token = encode_token(payload)
-      render json: {user: user, user_species: species, user_genus: genus, jwt: token}
+      render json: {user: {id: user.id, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus, jwt: token}}
       user.save
     else
       render json: {errors: "Login Failed. Don't suck, just try again... but better this time.", message: user.errors.full_messages}.to_json
