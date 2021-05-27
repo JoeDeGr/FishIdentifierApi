@@ -1,13 +1,11 @@
 class AuthController < ApplicationController
     def login
         user = User.find_by(username: user_params[:username])
-        binding.pry
         if user && user.authenticate(user_params[:password])
             payload = { user_id: user.id }
             token = encode_token(payload)
             species = user.species
             genus = user.genus
-            binding.pry
             render json: {user: user, user_species: species, user_genus: genus, jwt: token}
         else
             render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
