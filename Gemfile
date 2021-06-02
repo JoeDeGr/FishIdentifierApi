@@ -43,3 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #add to gemfile for active_storage
 # gem "aws-sdk-s3", require: false
 gem 'jwt'
+
+# gem 'react-rails'
+# gem 'webpacker'
+gem 'rack-cors'

@@ -2,9 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create]
 
   def create
-    binding.pry
     user = User.new(user_params)
-    binding.pry
     if user.valid? && user.authenticate(params[:user][:password])
       payload = {user_id: user.id}
       species = user.species
