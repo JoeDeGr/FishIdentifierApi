@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'posts/update'
   get 'posts/delete'
 
-  get 'genus/show'
-  get 'species/show'
+  get 'genus', to: "genus#show"
+  get 'species', to: "species#show"
   
   get "/auto_login", to: "auth#auto_login"
   get "/authorized_user", to: "auth#authorized_user"
