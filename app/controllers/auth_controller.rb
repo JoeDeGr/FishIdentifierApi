@@ -7,7 +7,7 @@ class AuthController < ApplicationController
             token = encode_token(payload)
             species = user.species
             genus = user.genus
-            render json: {user: {id: user.id, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus, jwt: token}}
+            render json: {user: {id: user.id, email: user.email, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus, jwt: token}}
         else
             render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
         end
@@ -16,9 +16,8 @@ class AuthController < ApplicationController
 
     def auto_login
         if session_user
-            binding.pry
-            user = @user
-            render json: {user: {id: user.id, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus}}
+            user = session_user
+            render json: {user: {id: user.id, email: user.email, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus}}
         else
             render json: {errors: "Login Failed. Don't suck, just try again... but better this time."}.to_json
         end
