@@ -68,7 +68,7 @@ class UsersController < ApplicationController
       user = session_user
       species = Species.find_by_id(params[:species][:id])
       if !user.species.include?(species)
-        user.species.push(species)
+        user.species.delete(species)
         user.save
       end
       render json: {user: {id: user.id, email: user.email, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus}}
@@ -82,8 +82,8 @@ class UsersController < ApplicationController
       user = session_user
       genus = Genus.find_by_id(params[:genus][:id])
       if user.genus.include?(genus)
+        user.genus.delete(genus)
         binding.pry
-        user.genus.push(genus)
         user.save
       end
       render json: {user: {id: user.id, email: user.email, name: user.name, username: user.username, user_species: user.species, user_genus: user.genus}}
